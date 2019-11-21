@@ -27,8 +27,8 @@ class CourseTest extends TestCase
 
         $teacher->courses()->save($course);
 
-//        $this->actingAs($teacher)
-//            ->get('/courses')
-//            ->assertSeeText($course->name);
+        $this->actingAs($teacher)
+            ->get('/courses')
+            ->assertSeeText($course->name);
     }
 }

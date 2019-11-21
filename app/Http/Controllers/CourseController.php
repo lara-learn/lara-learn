@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        return view(
+            'courses.index',
+            ['courses' => Auth::user()->courses]
+        );
     }
 
     /**
@@ -30,7 +34,7 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +45,7 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param \App\Course $course
      * @return \Illuminate\Http\Response
      */
     public function show(Course $course)
@@ -52,7 +56,7 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param \App\Course $course
      * @return \Illuminate\Http\Response
      */
     public function edit(Course $course)
@@ -63,8 +67,8 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Course $course
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Course $course)
@@ -75,7 +79,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course  $course
+     * @param \App\Course $course
      * @return \Illuminate\Http\Response
      */
     public function destroy(Course $course)

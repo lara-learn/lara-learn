@@ -2,12 +2,11 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Parental\HasChildren;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable, HasChildren;
 
@@ -20,6 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $childTypes = [
         'teacher' => Teacher::class,
+        'student' => Student::class,
     ];
 
     protected $hidden = [
